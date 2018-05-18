@@ -36,18 +36,15 @@ public fun Double.toMoney(locale: Locale): String {
 }
 
 
-public fun String.formatDouble(): String {
-    val numberFormat = NumberFormat.getNumberInstance(Locale.US)
+public fun String.formatDouble(): Double {
     if (this == ("0")) {
-        val bigDecimal = BigDecimal(this).setScale(2, BigDecimal.ROUND_HALF_UP)
-        return numberFormat.format(bigDecimal)
+        return 0.0
     }
-    val format = DecimalFormat("0.00")
-    return (format.format(java.lang.Double.valueOf(this) / 100)).replace(",", ".")
+    return java.lang.Double.valueOf(this) / 100
 }
 
 
-public fun String.moneyToDouble(): String {
-    return  this.replace( "^[0-9]*$".toRegex(), "").formatDouble()
+public fun String.moneyToDouble(): Double {
+    return  this.replace( "[^0-9]*$".toRegex(), "").formatDouble()
 }
 

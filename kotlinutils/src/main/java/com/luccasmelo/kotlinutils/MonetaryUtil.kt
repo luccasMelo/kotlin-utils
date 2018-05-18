@@ -45,6 +45,6 @@ public fun String.formatDouble(): Double {
 
 
 public fun String.moneyToDouble(): Double {
-    return  this.replace( "[^0-9]*$".toRegex(), "").formatDouble()
+    return  this.replace( "[^0-9]".toRegex(), "").formatDouble()
 }
 

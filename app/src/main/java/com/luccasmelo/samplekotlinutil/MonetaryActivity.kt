@@ -18,18 +18,19 @@ public class MonetaryActivity:AppCompatActivity(){
         super.onCreate(savedInstanceState)
         val binding :  ActivityMonetaryBinding =  DataBindingUtil.setContentView(this, R.layout.activity_monetary)
         binding.monetary = this
-        Log.e("TAG","hehufhi2.0".replace( "[^0-9]".toRegex(), ""))
+
 
     }
 
     fun onConvert(){
         val  value =  this.value.get()!!
-        if(value.contains(',')){//Money
-            this.value.set(value.moneyToDouble().toString())
-        }else if (value.contains('.')){//Double
-            this.value.set((value.toDouble().toMoney()))
-        }else{//Plain value
-            this.value.set(value.toMoney())
+        when {
+            value.contains(',') -> //Money
+                this.value.set(value.moneyToDouble().toString())
+            value.contains('.') -> //Double
+                this.value.set((value.toDouble().toMoney()))
+            else -> //Plain value
+                this.value.set(value.toMoney())
         }
 
     }

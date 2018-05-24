@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".PersistenceActivity" />
         <activity android:name=".MonetaryActivity" />
+        <activity android:name=".MaskActivity" />
+        <activity android:name=".AdapterActivity" />
     </application>
 
 </manifest>

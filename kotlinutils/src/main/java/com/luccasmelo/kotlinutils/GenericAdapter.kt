@@ -18,13 +18,14 @@ abstract class GenericAdapter<T> : RecyclerView.Adapter<GenericViewHolder>() {
     override fun onBindViewHolder(holder: GenericViewHolder,
                                   position: Int) {
         val obj = getObjForPosition(position)
-        holder.bind(obj)
+        holder.bind(obj, getVarId())
     }
 
     override fun getItemViewType(position: Int): Int {
         return getLayoutIdForPosition(position)
     }
 
+    protected abstract fun getVarId():Int
     protected abstract fun getObjForPosition(position: Int): Any
 
     protected abstract fun getLayoutIdForPosition(position: Int): Int
@@ -34,8 +35,9 @@ abstract class GenericAdapter<T> : RecyclerView.Adapter<GenericViewHolder>() {
 
 class GenericViewHolder internal constructor(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(any: Any) {
-       binding.setVariable(BR._all, any)
+    fun bind(any: Any, id:Int) {
+
+       binding.setVariable(id, any)
         binding.executePendingBindings()
     }
 }

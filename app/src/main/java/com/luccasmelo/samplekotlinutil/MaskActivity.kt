@@ -21,5 +21,6 @@ public class MaskActivity: AppCompatActivity() {
 
     fun maskPressed(){
         valueMasked.set(valueUnMasked.get()!!.mask("###.###.###-##"))
+
     }
 }

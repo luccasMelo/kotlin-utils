@@ -21,7 +21,7 @@ public class AdapterImplement(val listString: List<String>): GenericAdapter<List
     }
 
     override fun update(objects: List<List<ObservableField<String>>>) {
-        TODO()
+        //implement
     }
 
 }

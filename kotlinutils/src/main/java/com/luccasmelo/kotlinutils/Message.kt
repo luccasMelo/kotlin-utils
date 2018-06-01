@@ -39,7 +39,7 @@ public fun View.showSnack(message: String, color: String) {
     val snack = Snackbar.make(this.findViewById(R.id.container), message, Snackbar.LENGTH_LONG)
     val view = snack.view
     val tv: TextView = view.findViewById(android.support.design.R.id.snackbar_text);
-    tv.setTextColor(Color.parseColor("#FFF"))
+    tv.setTextColor(Color.parseColor("#FFFFFF"))
     view.setBackgroundColor(Color.parseColor(color))
     snack.show()
 }
@@ -48,7 +48,7 @@ public fun AppCompatActivity.showSnack(message: String, color: String) {
     val snack = Snackbar.make(this.findViewById(R.id.container), message, Snackbar.LENGTH_LONG)
     val view = snack.view
     val tv: TextView = view.findViewById(android.support.design.R.id.snackbar_text)
-    tv.setTextColor(Color.parseColor("#FFF"))
+    tv.setTextColor(Color.parseColor("#FFFFFF"))
     view.setBackgroundColor(Color.parseColor(color))
     snack.show()
 }
@@ -58,7 +58,7 @@ public fun AppCompatActivity.showSnackUndo(message: String, color: String, funct
     val snack = Snackbar.make(this.findViewById(R.id.container), message, Snackbar.LENGTH_LONG)
     val view = snack.view
     val tv: TextView = view.findViewById(android.support.design.R.id.snackbar_text)
-    tv.setTextColor(Color.parseColor("#FFF"))
+    tv.setTextColor(Color.parseColor("#FFFFFF"))
     view.setBackgroundColor(Color.parseColor(color))
     snack.setAction(R.string.undo,{
         function.invoke()

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KotlinUtils</string>
+    <string name="undo">Desfazer</string>
+    <string name="green">#4caf50</string>
+    <string name="red">#e53935</string>
+    <string name="yellow">#fdd835</string>
+
 </resources>

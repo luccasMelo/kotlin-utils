@@ -20,6 +20,10 @@
         <activity android:name=".MonetaryActivity" />
         <activity android:name=".MaskActivity" />
         <activity android:name=".AdapterActivity" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

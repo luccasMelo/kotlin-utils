@@ -3,7 +3,6 @@ package com.luccasmelo.samplekotlinutil
 import android.databinding.DataBindingUtil
 import android.databinding.ObservableField
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import com.luccasmelo.kotlinutils.mask
 import com.luccasmelo.samplekotlinutil.databinding.ActivityMaskBinding

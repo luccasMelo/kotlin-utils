@@ -27,7 +27,7 @@ There  is a **UniversalMask, MaskWatcher, MonetaryMask, Generic Adapater and Per
 ```gradle
 //Add the dependency
 	dependencies {
-	   implementation 'com.github.luccasMelo:kotlin-utils:0.0.7'
+	   implementation 'com.github.luccasMelo:kotlin-utils:0.0.11'
 	}
 
 ```

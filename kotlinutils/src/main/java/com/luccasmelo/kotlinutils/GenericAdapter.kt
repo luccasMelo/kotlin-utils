@@ -8,7 +8,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import org.jetbrains.annotations.Nullable
+import android.support.v7.widget.LinearLayoutManager
+
+
 
 
 abstract class GenericAdapter<ITEM> constructor(protected var itemList: ArrayList<ITEM>,
@@ -44,12 +48,7 @@ abstract class GenericAdapter<ITEM> constructor(protected var itemList: ArrayLis
         diffResult.dispatchUpdatesTo(this)
     }
 
-    private fun updateAdapterWithDiffResult(result: DiffUtil.DiffResult) {
-        result.dispatchUpdatesTo(this)
-    }
 
-    private fun calculateDiff(newItems: MutableList<ITEM>) =
-            DiffUtil.calculateDiff(DiffUtilCallback(itemList, newItems))
 
     fun add(item: ITEM) {
         itemList.add(item)
@@ -109,5 +108,35 @@ internal class DiffUtilCallback<ITEM>(private val oldItems: MutableList<ITEM>,
 infix fun ViewGroup.inflate(layoutResId: Int): ViewDataBinding =
         DataBindingUtil.inflate<ViewDataBinding>(
                 LayoutInflater.from(this.context), layoutResId, this, false)
+
+
+abstract class EndlessScrollListener : RecyclerView.OnScrollListener() {
+
+    private var mPreviousTotal = 0
+
+    private var mLoading = true
+
+    override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+        super.onScrolled(recyclerView, dx, dy)
+
+        val visibleItemCount = recyclerView!!.childCount
+        val totalItemCount = recyclerView.layoutManager.itemCount
+        val firstVisibleItem = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+
+        if (mLoading) {
+            if (totalItemCount > mPreviousTotal) {
+                mLoading = false
+                mPreviousTotal = totalItemCount
+            }
+        }
+        val visibleThreshold = 5
+        if (!mLoading && totalItemCount - visibleItemCount <= firstVisibleItem + visibleThreshold) {
+            onLoadMore()
+            mLoading = true
+        }
+    }
+
+    abstract fun onLoadMore()
+}
 
 

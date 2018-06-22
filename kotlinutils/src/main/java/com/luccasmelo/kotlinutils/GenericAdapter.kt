@@ -30,6 +30,7 @@ abstract class GenericAdapter<ITEM> constructor(protected var itemList: ArrayLis
             val adapterPosition = viewHolder.adapterPosition
             if (adapterPosition != RecyclerView.NO_POSITION) {
                 onItemClick(itemView, adapterPosition)
+                onItemClick(viewHolder)
             }
         }
         return viewHolder
@@ -67,6 +68,8 @@ abstract class GenericAdapter<ITEM> constructor(protected var itemList: ArrayLis
     protected open fun onItemClick(itemView: View, position: Int) {
     }
 
+    protected open fun onItemClick(viewHolder:GenericViewHolder) {
+    }
 
     override fun onViewRecycled(holder: GenericViewHolder) {
         super.onViewRecycled(holder)

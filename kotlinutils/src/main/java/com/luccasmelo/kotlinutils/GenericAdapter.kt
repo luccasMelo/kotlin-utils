@@ -77,7 +77,7 @@ abstract class GenericAdapter<ITEM> constructor(protected var itemList: ArrayLis
 
     }
 
-    class GenericViewHolder internal constructor(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
+    class GenericViewHolder internal constructor(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(any: Any, id: Int) {
             binding.setVariable(id, any)

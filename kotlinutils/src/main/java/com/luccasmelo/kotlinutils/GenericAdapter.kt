@@ -43,9 +43,10 @@ abstract class GenericAdapter<ITEM> constructor(protected var itemList: ArrayLis
 
 
     @MainThread
-    fun update(items: ArrayList<ITEM>) {
+    protected open fun update(items: ArrayList<ITEM>) {
         val diffResult = DiffUtil.calculateDiff(DiffUtilCallback(itemList, items), false)
-        this.itemList = items
+        this.itemList.clear()
+        this.itemList.addAll(items)
         diffResult.dispatchUpdatesTo(this)
     }
 

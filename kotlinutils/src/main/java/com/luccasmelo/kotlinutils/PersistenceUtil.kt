@@ -19,7 +19,7 @@ public fun <T : Any> Any.load(context: Context, type: KClass<T>, tag: String): T
     return Gson().fromJson<T>(json, type.java)
 }
 
-public fun <T : Any> Any.loadString(context: Context, tag: String): String {
+public fun Any.loadString(context: Context, tag: String): String {
     val prefs = context.getSharedPreferences("javaClass.canonicalName", Context.MODE_PRIVATE)
     return prefs.getString(tag, "")
 }
